@@ -1,6 +1,7 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponseRedirect
 from models import Logbook as lob_db
 from django.views import generic
+from django.core.urlresolvers import reverse
 from forms import *
 import datetime
 from Cache import settings
@@ -21,6 +22,10 @@ def firma (request):
                 form=LogForm()
                 return render(request,'logbook/firma.html',{'form':form})
         return render(request,'logbook/firma.html')
-        return HttpResponse(value)
     else:
-        pass
+        form = LogForm(request.POST) #form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            log=form.save()
+            return HttpResponseRedirect(reverse('logbook:logbook'))
+        else:
+            return render(request,'logbook/firma.html',{ 'form': form, 'messaggio':'Tutti i campi sono obbligatori' })
