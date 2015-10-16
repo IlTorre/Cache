@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    {% if messaggio %}
+        <p class="required">{{ messaggio }}</p>
+    {% else %}
+        <p> <br /> </p>
+    {% endif %}
+    {% if form %}
+    <form  method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Invia" />
+    </form>
+    {% else %}
+        <h1 align="center">Attenzione devi aver completato tutti i passaggi della cache per poter firmare</h1>
+    {% endif %}
+
+</body>
+</html>

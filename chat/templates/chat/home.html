@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<head>
+    {% load staticfiles %}
+    <title>Torre92Bot</title>
+    <meta charset="utf-8">
+    <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'chat/css/style.css' %}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+  <div class="header">
+      <h4 align="center"><a href="{% url 'logbook:logbook' %}">Visita il logbook</a> </h4>
+    <h2>Messaggi</h2>
+  </div>
+  <div class="chat-box">
+    <div class="message-box left-img">
+      <div class="picture">
+        <img src="{% static 'chat/image/anonimo.jpeg' %}" title="user name"/>
+      </div>
+      <div class="message">
+        <span>Utente</span>
+        <p>{{ messaggio }}</p>
+      </div>
+    </div>
+    <div class="message-box right-img">
+      <div class="picture">
+        <img src="{% static 'chat/image/love.jpg' %}" title="user name"/>
+      </div>
+      <div class="message">
+        <span>Torre92Bot</span>
+        <p>{{ risposta|safe }}
+            {% if audio %}
+                <object data="{% static 'chat/media/audio/audio.mp3' %}" type="audio/mpeg" width="270"></object>
+            {% endif %}
+            {% if immagine %}
+                <img src="{% static 'chat/media/foto/img.jpg' %}" width="270">
+            {% endif %}
+        </p>
+      </div>
+    </div>
+    <div class="enter-message">
+        <form  method="post">
+            {% csrf_token %}
+                        <input type="text" name="messaggio" placeholder="Scrivi il tuo messaggio.."/>
+                        <input type="submit" value="Invia" class="send"/>
+        </form>
+    </div>
+  </div>
+</div>
+
+  <script src="{% static 'chat/js/index.js' %}"></script>
+
+</body>
+
+</html>

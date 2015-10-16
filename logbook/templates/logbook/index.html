@@ -1,0 +1,89 @@
+<!DOCTYPE  html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    {% load staticfiles %}
+<title>Logbook</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="{% static 'logbook/css/reset-fonts.css' %}" type="text/css" media="screen, projection" />
+<link rel="stylesheet" href="{% static 'logbook/css/main.css' %}" type="text/css" media="screen, projection" />
+
+</head>
+<body>
+<div id="wrap">
+  <div id="header" class="float">
+    <h1 id="logo" class="hidden"><a href="#">GC21776</a></h1>
+    <h2 id="tagline" class="hidden">di Torre92</h2>
+  </div>
+  <!-- / header -->
+<div id="body" class="float">  
+<div id="bg-rust" class="float">
+      <div id="col-l" class="float">
+        <ul id="artists-list">
+        {% if logbook %}
+            {% for log in logbook %}
+                <li>
+                    <p class="col-l"><a href="#">
+                        <img src="{% static 'logbook/img/smile.gif' %}" alt="" /></a>
+                    </p>
+                    <div class="artist-data">
+                        <h3>'{{ log.utente }}</h3>
+                        <span class="artist-years">{{ log.data|date:"d/n o" }}</span>
+                        <p class="artist-desc">{{ log.log }}</p>
+                    </div>
+                </li>
+            {% endfor %}
+        {% else %}
+            <h1 align="center">Non è ancora presente un log!</h1>
+            <p align="center">Potresti essere tu il primo!</p>
+        {% endif %}
+        </ul>
+      </div>
+      <div id="col-r" class="float">
+        <div id="main-content" class="artist-data">
+          <h1>Congratulazioni! Hai appena trovato un geocache—volontariamente o no.</h1>
+    <p>
+        ll Geocaching &#232; un&#39;avventura che avviene in qualsiasi momento e luogo, dove i giocatori (chiamati geocacher) usano un&#39;app Geocaching o un GPS per trovare contenitori nascosti in giro per il mondo.
+    </p>
+
+    <h2>Cosa fare ora:</h2>
+    <ul>
+        <li>Firma e metti la data sul logbook</li>
+        <li>Scambia gli oggetti (se lo desideri), ricorda di lasciare qualcosa di valore pari o superiore</li>
+        <li>Se trovi qualcosa con impresso sopra &quot;Trackable at Geocaching.com&quot;, &#232; meglio lasciarlo nel geocache se non sai cosa farci</li>
+        <li>Rinascondi il contenitore esattamente dove e come l&#39;hai trovato in modo che gli altri geocacher lo possano trovare</li>
+        <li>Logga il tuo ritrovamento su Geocaching.com o utilizza l&#39;app ufficiale gratuita di Geocaching</li>
+    </ul>
+
+    <p>
+        Se il contenitore deve essere rimosso per qualsiasi motivo, contatta il proprietario del geocache all'indirizzo email indicato di seguito. È inoltre possibile visitare <a href="https://www.geocaching.com/help"> geocaching.com/help</a> e inviare un messaggio con informazioni univoche riguardo al geocache, ad esempio il codice GC, il nome del geocache, oppure un indirizzo nelle vicinanze (tra cui la città e la nazione).
+    </p>
+
+    <p class="contact-info">
+        <a href="https://www.geocaching.com/account/messagecenter?recipientId=c4d20a73-168e-4644-bcff-1dbfa3b7f82b">Contattami</a>
+    </p>
+
+    <h2>Unisciti al divertimento</h2>
+    <p>
+        Visita il sito Geocaching.com o scarica l&#39;app ufficiale gratuita di Geocaching per iniziare a giocare!
+    </p>
+    <p class="logo">
+        <img src="https://www.geocaching.com/play/Content/images/ui/geocaching-logo-print.png" alt="Geocaching Logo" height="40" width="44" />
+        www.geocaching.com
+    </p>
+        </div>
+      </div>
+      <div class="hr-ornament">
+        <hr class="hidden" />
+        <!-- -->
+      </div>
+    </div>
+  </div>
+  <!-- / body -->
+  <br style="clear: both" />
+ <div id="footer" class="float">
+<p> <a href="#"><img class="box-art-nouveau" src="{% static 'logbook/img/logo.gif' %}" alt="" /></a> </p>
+ </div>
+    </div>
+<!-- / wrap -->
+</body>
+</html>
